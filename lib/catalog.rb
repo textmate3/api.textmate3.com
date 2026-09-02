@@ -31,7 +31,7 @@ class Catalog
   def bundle_dirs
     excluded = Array(configuration["exclude"])
     Dir.children(@bundles_root)
-      .select { |name| name.end_with?(".tmbundle") || name.end_with?("-tmbundle") }
+      .select { |name| name.end_with?(".tmbundle") }
       .select { |name| File.directory?(File.join(@bundles_root, name)) }
       .reject { |name| excluded.include?(name) }
       .sort

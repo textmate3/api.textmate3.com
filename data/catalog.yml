@@ -67,7 +67,7 @@ bundles:
   python.tmbundle:             { isDefault: true }
   r.tmbundle:                  { isDefault: true }
   regularexpressions.tmbundle: { isDefault: true }
-  ruby-on-rails-tmbundle:      { isDefault: true }
+  ruby-on-rails.tmbundle:      { isDefault: true }
   ruby.tmbundle:               { isDefault: true }
   scm.tmbundle:                { isDefault: true }
   shellscript.tmbundle:        { isDefault: true }
