@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# script/bootstrap — install Ruby gem dependencies for api.textmate3.com
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+# shellcheck source=script/_chruby.sh
+source "$(dirname "$0")/_chruby.sh"
+
+if ! command -v bundle >/dev/null 2>&1; then
+  echo "bundler is required. Try: gem install bundler" >&2
+  exit 1
+fi
+
+bundle install

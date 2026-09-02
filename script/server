@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# script/server — run the local bundle catalog API on http://localhost:3000
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+# shellcheck source=script/_chruby.sh
+source "$(dirname "$0")/_chruby.sh"
+
+# Ensure tarballs exist before starting; cheap no-op if already current.
+script/build
+
+exec bundle exec puma --bind tcp://127.0.0.1:3000 config.ru

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+	<channel>
+		<title>TextMate 3</title>
+		<link>https://api.textmate3.com/appcast.xml</link>
+		<description>Application updates for TextMate 3. Empty until the first release ships. Items are added by the release pipeline and signed with the production EdDSA key.</description>
+		<language>en</language>
+	</channel>
+</rss>

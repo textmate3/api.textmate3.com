@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+# script/appcast — package a built TextMate.app into releases/ and regenerate the Sparkle appcast.
+#
+# Usage:
+#   script/appcast /path/to/TextMate.app
+#
+# The archive is zipped into releases/, and generate_appcast signs every archive there with the
+# EdDSA key in the login keychain and writes releases/appcast.xml, which the server exposes at
+# /appcast.xml with download links pointing back at this server.
+#
+# The archive is a build product: it freezes whatever binary it was packaged from. After any change
+# to the application, rerun this against a fresh build, or the next update test installs the old
+# code and whatever is being tested silently is not in the app that comes back. To advertise the
+# archive as newer than the running build, raise CFBundleVersion and CFBundleShortVersionString on
+# a copy of the built application with plutil, then re-sign it ad hoc before packaging:
+#
+#   ditto TextMate.app /tmp/next/TextMate.app
+#   plutil -replace CFBundleVersion -string <higher> /tmp/next/TextMate.app/Contents/Info.plist
+#   codesign --force -s - --options runtime --entitlements <extracted> /tmp/next/TextMate.app
+#   script/appcast /tmp/next/TextMate.app
+
+require "fileutils"
+require "shellwords"
+
+REPO_ROOT     = File.expand_path("..", __dir__)
+RELEASES_ROOT = File.join(REPO_ROOT, "releases")
+SPARKLE_BIN   = File.expand_path("../textmate/vendor/Sparkle/bin", REPO_ROOT)
+
+app_path = ARGV.first
+abort "usage: script/appcast /path/to/TextMate.app" unless app_path && File.directory?(app_path)
+
+version = `/usr/bin/plutil -extract CFBundleShortVersionString raw -o - #{File.join(app_path, "Contents/Info.plist").shellescape}`.strip
+build   = `/usr/bin/plutil -extract CFBundleVersion raw -o - #{File.join(app_path, "Contents/Info.plist").shellescape}`.strip
+abort "unable to read the app's version" if version.empty? || build.empty?
+
+FileUtils.mkdir_p(RELEASES_ROOT)
+zip_path = File.join(RELEASES_ROOT, "TextMate-#{version}-#{build}.zip")
+
+puts "→ #{File.basename(zip_path)}"
+system("/usr/bin/ditto", "-c", "-k", "--keepParent", app_path, zip_path) or abort "ditto failed"
+
+puts "→ appcast.xml"
+system(File.join(SPARKLE_BIN, "generate_appcast"),
+	"--download-url-prefix", "http://localhost:3000/releases/",
+	"-o", File.join(RELEASES_ROOT, "appcast.xml"),
+	RELEASES_ROOT) or abort "generate_appcast failed"
+
+puts "done: #{Dir.children(RELEASES_ROOT).sort.join(", ")}"

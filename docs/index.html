@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>api.textmate3.com</title>
+	<style>
+		body { font-family: -apple-system, system-ui, sans-serif; max-width: 40rem; margin: 4rem auto; padding: 0 1rem; line-height: 1.6; }
+		code { font-family: ui-monospace, monospace; }
+	</style>
+</head>
+<body>
+	<h1>api.textmate3.com</h1>
+	<p>The machine endpoints for TextMate: the signed bundle catalog and the application update feed. Static files, signed with Ed25519, verified by the application against keys compiled into it.</p>
+	<ul>
+		<li><a href="bundles.xml"><code>/bundles</code></a> — the signed bundle index (<a href="bundles.sig"><code>.sig</code></a>)</li>
+		<li><code>/downloads/…</code> — one archive per bundle, addressed by the index</li>
+		<li><a href="appcast.xml"><code>/appcast.xml</code></a> — the Sparkle update feed</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# script/publish:
+# This script signs the bundle catalog with the production key and
+# pushes it to the public `catalog` repository.
+# It wraps publish.rb so chruby is loaded first.
+
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+# shellcheck source=script/_chruby.sh
+source "$(dirname "$0")/_chruby.sh"
+
+exec ruby "$(dirname "$0")/publish.rb"

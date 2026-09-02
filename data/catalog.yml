@@ -1,0 +1,83 @@
+# api.textmate3.com
+# .tmBundles catalog
+#
+# Opt-out model: every `bundles/*.tmbundle/` and `bundles/*-tmbundle/`
+# checkout under `../bundles/` is exposed in `/bundles` by default.
+# List exclusions and per-bundle metadata overrides below.
+#
+# Field reference (read by Frameworks/updater/src/updater.cc):
+#   isMandatory: required by the app but users cannot uninstall (default false)
+#   isDefault:   auto-installed on first launch and users can uninstall (default false)
+#   category:    UI grouping in Bundle Editor / "Install Bundles" picker (default "Languages")
+#
+# Other metadata:
+#   (name, uuid, contactName, contactEmailRot13, description, requires)
+#   comes from each bundle's own info.plist and does not need to be repeated here
+
+exclude: []
+
+defaults:
+  category: Languages
+  isDefault: false
+  isMandatory: false
+
+# Per-bundle overrides: the key is the bundle directory name under ../bundles/
+bundles:
+  # System (required)
+  bundle-support.tmbundle:
+    isMandatory: true
+    category: System
+
+  # Bundle authoring
+  bundle-development.tmbundle:
+    isDefault: true
+    category: Bundle Development
+
+  # Default set (mirrors the api.textmate.org defaults)
+  ada.tmbundle:                { isDefault: true }
+  antlr.tmbundle:              { isDefault: true }
+  applescript.tmbundle:        { isDefault: true }
+  c.tmbundle:                  { isDefault: true }
+  cmake.tmbundle:              { isDefault: true }
+  coffee-script.tmbundle:      { isDefault: true }
+  css.tmbundle:                { isDefault: true }
+  diff.tmbundle:               { isDefault: true }
+  git.tmbundle:                { isDefault: true }
+  graphviz.tmbundle:           { isDefault: true }
+  groovy.tmbundle:             { isDefault: true }
+  haskell.tmbundle:            { isDefault: true }
+  html.tmbundle:               { isDefault: true }
+  hyperlink-helper.tmbundle:   { isDefault: true }
+  java.tmbundle:               { isDefault: true }
+  javadoc.tmbundle:            { isDefault: true }
+  javascript-jquery.tmbundle:  { isDefault: true }
+  javascript.tmbundle:         { isDefault: true }
+  json.tmbundle:               { isDefault: true }
+  latex.tmbundle:              { isDefault: true }
+  licenses.tmbundle:           { isDefault: true }
+  lua.tmbundle:                { isDefault: true }
+  mail.tmbundle:               { isDefault: true }
+  make.tmbundle:               { isDefault: true }
+  markdown.tmbundle:           { isDefault: true }
+  math.tmbundle:               { isDefault: true }
+  matlab.tmbundle:             { isDefault: true }
+  mediawiki.tmbundle:          { isDefault: true }
+  objective-c.tmbundle:        { isDefault: true }
+  property-list.tmbundle:      { isDefault: true }
+  python.tmbundle:             { isDefault: true }
+  r.tmbundle:                  { isDefault: true }
+  regularexpressions.tmbundle: { isDefault: true }
+  ruby-on-rails-tmbundle:      { isDefault: true }
+  ruby.tmbundle:               { isDefault: true }
+  scm.tmbundle:                { isDefault: true }
+  shellscript.tmbundle:        { isDefault: true }
+  source.tmbundle:             { isDefault: true }
+  sql.tmbundle:                { isDefault: true }
+  tabular.tmbundle:            { isDefault: true }
+  text.tmbundle:               { isDefault: true }
+  textile.tmbundle:            { isDefault: true }
+  textmate.tmbundle:           { isDefault: true }
+  themes.tmbundle:             { isDefault: true }
+  todo.tmbundle:               { isDefault: true }
+  xml.tmbundle:                { isDefault: true }
+  yaml.tmbundle:               { isDefault: true }

@@ -1,0 +1,51 @@
+#!/usr/bin/env ruby
+# script/generate_bundle_signing_key — create an Ed25519 keypair that signs the
+# bundle catalog index and tarballs.
+#
+#   script/generate_bundle_signing_key              # development pair
+#   script/generate_bundle_signing_key production   # production pair
+#
+# The private half (the 32 byte seed, base64) goes into the login keychain. The
+# development entry is read by server.rb at boot; the production entry is read
+# by script/publish. The public half is printed: the development one belongs in
+# the app's local.rave, the production one in default.rave, both as
+# BUNDLE_PUBLIC_ED_KEY.
+#
+# Refuses to overwrite an existing keychain entry. To rotate a key, follow the
+# runbook, then delete the entry first:
+#
+#   security delete-generic-password -s 'TextMate bundle signing (development)'
+
+require "base64"
+require "bundler/setup"
+require "ed25519"
+
+environment = ARGV.first || "development"
+abort "Usage: #{$PROGRAM_NAME} [development|production]" unless %w[development production].include?(environment)
+
+service = "TextMate bundle signing (#{environment})"
+account = ENV.fetch("USER")
+
+if system("security", "find-generic-password", "-s", service, out: File::NULL, err: File::NULL)
+  abort "A keychain entry for ‘#{service}’ already exists. Delete it first to rotate."
+end
+
+signing_key = Ed25519::SigningKey.generate
+seed_base64 = Base64.strict_encode64(signing_key.seed)
+public_base64 = Base64.strict_encode64(signing_key.verify_key.to_bytes)
+
+unless system("security", "add-generic-password", "-s", service, "-a", account, "-w", seed_base64)
+  abort "Failed to store the private key in the login keychain."
+end
+
+puts "Private key stored in the login keychain as ‘#{service}’."
+puts "Public key (#{environment == "production" ? "default.rave" : "local.rave"} BUNDLE_PUBLIC_ED_KEY):"
+puts public_base64
+
+if environment == "production"
+  puts
+  puts "Now make the offline backup the custody rules require. Print or copy to a"
+  puts "drive kept outside any computer, then clear the clipboard and shell history:"
+  puts
+  puts "  security find-generic-password -s '#{service}' -w"
+end
