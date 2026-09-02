@@ -6,6 +6,7 @@
 #   GET /bundles       — XML plist index of all exposed bundles
 #                        (consumed by Frameworks/updater + Frameworks/BundlesManager)
 #   GET /bundles.sig   — detached base64 Ed25519 signature over the exact bytes of /bundles
+#   GET /bundles.pub   — the base64 Ed25519 public key that verifies it
 #   GET /downloads/:name.tbz
 #                      — serves the prebuilt bundle archive
 #   GET /appcast.xml   — Sparkle feed for application updates; script/appcast writes it
@@ -50,7 +51,7 @@ class Server < Sinatra::Base
 
   get "/" do
     content_type :text
-    routes = ["GET /", "GET /bundles", "GET /bundles.sig", "GET /downloads/:name.tbz", "GET /appcast.xml", "GET /releases/:file"]
+    routes = ["GET /", "GET /bundles", "GET /bundles.sig", "GET /bundles.pub", "GET /downloads/:name.tbz", "GET /appcast.xml", "GET /releases/:file"]
     "api.textmate3.com — local dev\n\n" + routes.join("\n") + "\n"
   end
 
@@ -97,6 +98,11 @@ class Server < Sinatra::Base
   get "/bundles.sig" do
     content_type :text
     cached_index[:signature]
+  end
+
+  get "/bundles.pub" do
+    content_type :text
+    Server.catalog.public_key + "\n"
   end
 
   get "/downloads/:name.tbz" do

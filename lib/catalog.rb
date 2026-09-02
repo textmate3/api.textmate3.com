@@ -26,6 +26,9 @@ class Catalog
 
   def sign(bytes) = Base64.strict_encode64(@signing_key.sign(bytes))
 
+  # The verifying half of the signing key, base64, as the application compiles it in.
+  def public_key = Base64.strict_encode64(@signing_key.verify_key.to_bytes)
+
   def tarball_path(dir_name) = File.join(@tarballs_root, "#{dir_name}.tbz")
 
   def bundle_dirs

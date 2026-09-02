@@ -10,7 +10,9 @@
 # The index is written three times: `bundles` is the URL the application
 # fetches, and `bundles.xml` is a byte-identical twin whose extension lets
 # a browser display the content for debugging. The detached signature covers
-# the bytes, so it covers both.
+# the bytes, so it covers both. `bundles.pub` is the public key that verifies
+# the signature, the same key the application is built with, so anyone can
+# check the catalog without the application.
 
 require "fileutils"
 
@@ -39,6 +41,7 @@ bundle_count = index.scan("<key>isMandatory</key>").size
   File.write(File.join(SITE_ROOT, name), index)
 end
 File.write(File.join(SITE_ROOT, "bundles.sig"), catalog.sign(index) + "\n")
+File.write(File.join(SITE_ROOT, "bundles.pub"), catalog.public_key + "\n")
 
 destination = File.join(SITE_ROOT, "downloads")
 FileUtils.mkdir_p(destination)
