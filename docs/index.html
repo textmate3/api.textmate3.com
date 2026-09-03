@@ -11,12 +11,27 @@
 </head>
 <body>
 	<h1>api.textmate3.com</h1>
-	<p>The machine endpoints for TextMate: the signed bundle catalog and the application update feed. Static files, signed with Ed25519, verified by the application against keys compiled into it.</p>
+
+	<p>
+		This API is a collection of the machine endpoints for
+		TextMate 3 (<a href="https://textmate3.com">coming soon</a>).
+		The signed bundle catalog and the application update feed.
+		All of these are static files, signed with <a href="https://en.wikipedia.org/wiki/EdDSA#Ed25519">Ed25519</a>,
+		and verified by the application against public keys compiled into it.
+
+		The key at <a href="bundles.pub.txt"><code>/bundles.pub</code></a> verifies the bundle index and every archive it lists.
+
+		The app update feed carries Sparkle’s own signatures under a separate key.
+	</p>
+
 	<ul>
-		<li><a href="bundles.xml"><code>/bundles</code></a> — the signed bundle index (<a href="bundles.sig"><code>.sig</code></a>)</li>
-		<li><a href="bundles.pub.txt"><code>/bundles.pub</code></a> — the Ed25519 public key that verifies the index and every archive, the same key compiled into the application (<a href="bundles.pub.txt"><code>.txt</code></a> twin, viewable in a browser)</li>
-		<li><code>/downloads/…</code> — one archive per bundle, addressed by the index</li>
-		<li><a href="appcast.xml"><code>/appcast.xml</code></a> — the Sparkle update feed</li>
+		<li><a href="appcast.xml"><code>/appcast.xml</code></a>: the <a href="https://sparkle-project.org">Sparkle feed</a> for app updates</li>
+		<li><a href="bundles.xml"><code>/bundles</code></a>: the signed bundle index</li>
+		<li><a href="bundles.sig"><code>/bundles.sig</code></a>: the signature file for the bundle index</li>
+		<li><a href="bundles.pub"><code>/bundles.pub</code></a>: the Ed25519 public key that verifies the index and every archive</li>
+		<li><a href="bundles.pub.txt"><code>/bundles.pub.txt</code></a>: the plaintext twin of <code>/bundles.pub</code>, viewable in a browser</li>
+		<li><code>/downloads/…</code>: one archive per bundle, addressed by the index</li>
+		<li><a href="downloads/ruby.tmbundle.tbz"><code>/downloads/ruby.tmbundle.tbz</code></a>: for example, the Ruby bundle</li>
 	</ul>
 </body>
 </html>
