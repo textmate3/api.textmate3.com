@@ -9,6 +9,7 @@ Everything a running TextMate asks for over the network, served as static files 
 | `/bundles`       | the signed bundle index the application fetches                                     |
 | `/bundles.sig`   | detached base64 Ed25519 signature over the exact bytes of `/bundles`                |
 | `/bundles.pub`   | the base64 Ed25519 public key that verifies `/bundles.sig` and every archive        |
+| `/bundles.pub.txt` | byte-identical twin of `/bundles.pub`, viewable in a browser                      |
 | `/bundles.xml`   | byte-identical twin of `/bundles`, viewable in a browser                            |
 | `/downloads/…`   | one archive per bundle, addressed by the index and signed inside its entry          |
 | `/appcast.xml`   | the Sparkle feed for application updates; release archives live on GitHub Releases |

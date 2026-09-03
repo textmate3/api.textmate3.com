@@ -14,7 +14,7 @@
 	<p>The machine endpoints for TextMate: the signed bundle catalog and the application update feed. Static files, signed with Ed25519, verified by the application against keys compiled into it.</p>
 	<ul>
 		<li><a href="bundles.xml"><code>/bundles</code></a> — the signed bundle index (<a href="bundles.sig"><code>.sig</code></a>)</li>
-		<li><a href="bundles.pub"><code>/bundles.pub</code></a> — the Ed25519 public key that verifies the index and every archive, the same key compiled into the application</li>
+		<li><a href="bundles.pub.txt"><code>/bundles.pub</code></a> — the Ed25519 public key that verifies the index and every archive, the same key compiled into the application (<a href="bundles.pub.txt"><code>.txt</code></a> twin, viewable in a browser)</li>
 		<li><code>/downloads/…</code> — one archive per bundle, addressed by the index</li>
 		<li><a href="appcast.xml"><code>/appcast.xml</code></a> — the Sparkle update feed</li>
 	</ul>

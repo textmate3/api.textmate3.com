@@ -12,7 +12,8 @@
 # a browser display the content for debugging. The detached signature covers
 # the bytes, so it covers both. `bundles.pub` is the public key that verifies
 # the signature, the same key the application is built with, so anyone can
-# check the catalog without the application.
+# check the catalog without the application. `bundles.pub.txt` is its
+# byte-identical twin, since Pages serves the bare extension as a download.
 
 require "fileutils"
 
@@ -41,7 +42,9 @@ bundle_count = index.scan("<key>isMandatory</key>").size
   File.write(File.join(SITE_ROOT, name), index)
 end
 File.write(File.join(SITE_ROOT, "bundles.sig"), catalog.sign(index) + "\n")
-File.write(File.join(SITE_ROOT, "bundles.pub"), catalog.public_key + "\n")
+%w[bundles.pub bundles.pub.txt].each do |name|
+  File.write(File.join(SITE_ROOT, name), catalog.public_key + "\n")
+end
 
 destination = File.join(SITE_ROOT, "downloads")
 FileUtils.mkdir_p(destination)
