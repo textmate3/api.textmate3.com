@@ -10,6 +10,26 @@
 		</description>
 		<language>en</language>
 		<item>
+			<title>TextMate 2.1.0-alpha.7</title>
+			<sparkle:version>15826</sparkle:version>
+			<sparkle:shortVersionString>2.1.0-alpha.7</sparkle:shortVersionString>
+			<sparkle:channel>alpha</sparkle:channel>
+			<sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+			<pubDate>Sun, 06 Sep 2026 11:30:26 -0000</pubDate>
+			<link>https://github.com/textmate3/textmate/releases/tag/v2.1.0-alpha.7</link>
+			<description>
+				<![CDATA[<ul>
+<li>The Terminal preferences pane in SwiftUI, the last of the six (#27)</li>
+<li>The Bundles preferences pane in SwiftUI (#26)</li>
+<li>The Variables preferences pane in SwiftUI (#25)</li>
+<li>The Projects preferences pane in SwiftUI (#24)</li>
+<li>The Files preferences pane in SwiftUI (#23)</li>
+<li>The Updates preferences pane in SwiftUI, with the update channel (#22)</li>
+</ul>]]>
+			</description>
+			<enclosure url='https://github.com/textmate3/textmate/releases/download/v2.1.0-alpha.7/TextMate-2.1.0-alpha.7.zip' length='17227548' type='application/octet-stream' sparkle:edSignature='Q39Ie2Kc4Ec6ODHIpwSCaTBeBSB65R7BQsQlPjDSXIs1AeG/DhuaXFhQt4up/ZoqXrbd2uDyB8ckwjvgo8OFAw=='/>
+		</item>
+		<item>
 			<title>TextMate 2.1.0-alpha.6</title>
 			<sparkle:version>15820</sparkle:version>
 			<sparkle:shortVersionString>2.1.0-alpha.6</sparkle:shortVersionString>
