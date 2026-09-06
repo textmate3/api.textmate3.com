@@ -4,11 +4,26 @@
 		<title>TextMate 3</title>
 		<link>https://api.textmate3.com/appcast.xml</link>
 		<description>
-			Application updates for TextMate 3. Empty until the first release ships.
+				Application updates for TextMate 3. Empty until the first release ships.
 			Items are added by the release pipeline and signed with the production EdDSA
-			key.
+			key. 
 		</description>
 		<language>en</language>
+		<item>
+			<title>TextMate 2.1.0-alpha.2</title>
+			<sparkle:version>15816</sparkle:version>
+			<sparkle:shortVersionString>2.1.0-alpha.2</sparkle:shortVersionString>
+			<sparkle:channel>alpha</sparkle:channel>
+			<sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+			<pubDate>Sun, 06 Sep 2026 01:55:42 -0000</pubDate>
+			<link>https://github.com/textmate3/textmate/releases/tag/v2.1.0-alpha.2</link>
+			<description>
+				<![CDATA[<ul>
+<li>Two fixes from the first alpha: fetch tags with force, and zip without extended attributes (#20)</li>
+</ul>]]>
+			</description>
+			<enclosure url='https://github.com/textmate3/textmate/releases/download/v2.1.0-alpha.2/TextMate-2.1.0-alpha.2.zip' length='17153914' type='application/octet-stream' sparkle:edSignature='T2ui6AzgrZMn223e2/Z6+GApOYi80VOoMa1wqhZlSyR/3ks/LcSl8xEHYbWOmWBKKNsheYC2gAKJpmxAByCXAA=='/>
+		</item>
 		<item>
 			<title>TextMate 2.1.0-alpha.1</title>
 			<sparkle:version>15815</sparkle:version>
