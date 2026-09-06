@@ -1,9 +1,70 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version='2.0' xmlns:sparkle='http://www.andymatuschak.org/xml-namespaces/sparkle'>
 	<channel>
 		<title>TextMate 3</title>
 		<link>https://api.textmate3.com/appcast.xml</link>
-		<description>Application updates for TextMate 3. Empty until the first release ships. Items are added by the release pipeline and signed with the production EdDSA key.</description>
+		<description>
+			Application updates for TextMate 3. Empty until the first release ships.
+			Items are added by the release pipeline and signed with the production EdDSA
+			key.
+		</description>
 		<language>en</language>
+		<item>
+			<title>TextMate 2.1.0-alpha.1</title>
+			<sparkle:version>15815</sparkle:version>
+			<sparkle:shortVersionString>2.1.0-alpha.1</sparkle:shortVersionString>
+			<sparkle:channel>alpha</sparkle:channel>
+			<sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+			<pubDate>Sun, 06 Sep 2026 00:54:40 -0000</pubDate>
+			<link>https://github.com/textmate3/textmate/releases/tag/v2.1.0-alpha.1</link>
+			<description>
+				<![CDATA[<ul>
+<li>The Legal page names what the application is made of (#19)</li>
+<li>Markdown lint</li>
+<li>A release pipeline with alpha, beta and release channels (#18)</li>
+<li>Notarize on request, and sign Sparkle's Autoupdate helper as itself (#17)</li>
+<li>Run the workflow once per push (#16)</li>
+<li>The privileged helper as an SMAppService daemon, retiring the last deprecated call (#15)</li>
+<li>Sign with a Developer ID, and re-sign the vendored Sparkle pieces with the same identity (#14)</li>
+<li>Give the application its own identity, with a first launch import from TextMate 2 (#13)</li>
+<li>Record the bundle editor forms and the parser deletion in the changelog (#12)</li>
+<li>Delete the OpenStep ASCII property list parser and Ragel (#11)</li>
+<li>Edit preferences and macros as forms in the bundle editor (#10)</li>
+<li>Edit themes as a form with a live preview in the bundle editor (#9)</li>
+<li>Grammar editor: panel edits reach the preview, rule shapes change, capture patterns in the outline (#8)</li>
+<li>Grammar editor: live preview of sample text parsed with the grammar being edited (#7)</li>
+<li>Grammar editor: add, remove and move rules, captures and repository names (#5)</li>
+<li>Grammar editor: rules as an outline and a form, in place of the text pane (#4)</li>
+<li>GrammarSchema: the grammar format as data, with a validator (#3)</li>
+<li>Swift Testing under script/test (#2)</li>
+<li>swift format's default two space indentation for the Swift sources</li>
+<li>Swift and SwiftUI spike: ApplicationInfo, the About page, and the encoding chooser sheet (#1)</li>
+<li>Rename LICENSE to LICENSE.md</li>
+<li>Reformat LICENSE as Markdown</li>
+<li>Record the removed gtm options in the changelog</li>
+<li>Drop gtm's --trim and --delimiters options, which were parsed and never implemented</li>
+<li>Pass .tbd library paths through in the test link too, which still prefixed them with -l</li>
+<li>Record the property list caches and the end of the Homebrew run time dependency in the changelog</li>
+<li>Remove Cap'n Proto: the schemas, the compiler step in bin/rave, the configure checks, the Brewfile line, and Homebrew's library directory from the linker search path</li>
+<li>Link the SDK's sqlite by path in DocumentWindow and OakAppKit, so a Homebrew sqlite on the search path is never picked up</li>
+<li>Drop the library validation entitlement from the command line tools, which load nothing foreign now, and say why the application still needs it for an ad hoc build</li>
+<li>Store the encoding classifier's frequency tables as a binary property list, EncodingFrequencies.plist</li>
+<li>Store the bundle index cache as a binary property list, BundlesIndex.plist, and read it back the same way in the application and gtm</li>
+<li>Remove the cache format benchmark tool now that the format is chosen, keeping the launch measurement in script/benchmark_bundle_index</li>
+<li>Left align the text columns of the benchmark report tables</li>
+<li>Record the bundle index benchmark in the changelog</li>
+<li>Report the first index build apart from the later ones, since it pays the process warmup a launch pays elsewhere</li>
+<li>Add script/benchmark_bundle_index, which builds and runs the cache format and launch measurements and prints the report</li>
+<li>Report bundle index cache load, index build and whole launch timings on stderr when TEXTMATE_BUNDLES_INDEX_TIMING is set, with TEXTMATE_BUNDLES_INDEX_PATH pointing the cache elsewhere</li>
+<li>Add bundle_index_benchmark, a tool that times the bundle index cache in Cap'n Proto, property list, JSON, JSON Lines, CSV and YAML forms</li>
+<li>Move the bundle index content filter from BundlesManager into the bundles framework as prune_bundle_item_plist</li>
+<li>Split the bundle index cache's property list form out of load and save as to_plist and from_plist</li>
+<li>Move the gtm tag to the commit each upload was built from</li>
+<li>Ship gtm inside the application and publish it from continuous integration as the gtm prerelease</li>
+<li>Sign gtm with the helper entitlements, so the hardened runtime lets it load the Homebrew libraries and it starts</li>
+</ul>]]>
+			</description>
+			<enclosure url='https://github.com/textmate3/textmate/releases/download/v2.1.0-alpha.1/TextMate-2.1.0-alpha.1.zip' length='17296396' type='application/octet-stream' sparkle:edSignature='xT6VmxU4AoDeeCfz5gA+jB0KAf6jqyx1YRXlNw1khJwjbOnk1aynSNXPTt4rBgo2uYSqWcV19N+qkAK1L169DA=='/>
+		</item>
 	</channel>
 </rss>
