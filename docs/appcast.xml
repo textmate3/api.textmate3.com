@@ -10,6 +10,22 @@
 		</description>
 		<language>en</language>
 		<item>
+			<title>TextMate 2.1.0-alpha.5</title>
+			<sparkle:version>15820</sparkle:version>
+			<sparkle:shortVersionString>2.1.0-alpha.5</sparkle:shortVersionString>
+			<sparkle:channel>alpha</sparkle:channel>
+			<sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+			<pubDate>Sun, 06 Sep 2026 04:58:22 -0000</pubDate>
+			<link>https://github.com/textmate3/textmate/releases/tag/v2.1.0-alpha.5</link>
+			<description>
+				<![CDATA[<ul>
+<li>Re-order README</li>
+<li>Update screenshots in README</li>
+</ul>]]>
+			</description>
+			<enclosure url='https://github.com/textmate3/textmate/releases/download/v2.1.0-alpha.5/TextMate-2.1.0-alpha.5.zip' length='17153907' type='application/octet-stream' sparkle:edSignature='1xfyhPa+HAfHUb8t9hdtnQaCbnXn9KGYWIhlyNik9O8rXEljKMBfA4Oavu1XfXkSkmXhqcikyeRp9QNtYKqVBA=='/>
+		</item>
+		<item>
 			<title>TextMate 2.1.0-alpha.4</title>
 			<sparkle:version>15818</sparkle:version>
 			<sparkle:shortVersionString>2.1.0-alpha.4</sparkle:shortVersionString>
