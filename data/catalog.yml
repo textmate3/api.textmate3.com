@@ -27,6 +27,10 @@ bundles:
   bundle-support.tmbundle:
     isMandatory: true
     category: System
+  # The Ruby bundle commands run on, and the Ruby a project asks for, through rv.
+  runtimes.tmbundle:
+    isMandatory: true
+    category: System
 
   # Bundle authoring
   bundle-development.tmbundle:
