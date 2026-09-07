@@ -10,6 +10,22 @@
 		</description>
 		<language>en</language>
 		<item>
+			<title>TextMate 2.1.0-alpha.8</title>
+			<sparkle:version>15828</sparkle:version>
+			<sparkle:shortVersionString>2.1.0-alpha.8</sparkle:shortVersionString>
+			<sparkle:channel>alpha</sparkle:channel>
+			<sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+			<pubDate>Mon, 07 Sep 2026 03:01:00 -0000</pubDate>
+			<link>https://github.com/textmate3/textmate/releases/tag/v2.1.0-alpha.8</link>
+			<description>
+				<![CDATA[<ul>
+<li>Bundle commands run on a pinned Ruby through rv and the Runtimes bundle, never the system Ruby (#29)</li>
+<li>A standalone helper beside the application's executable is signed as itself (#28)</li>
+</ul>]]>
+			</description>
+			<enclosure url='https://github.com/textmate3/textmate/releases/download/v2.1.0-alpha.8/TextMate-2.1.0-alpha.8.zip' length='22900797' type='application/octet-stream' sparkle:edSignature='69byMt72sbiOyLG1v8AHXOOZudFjDvgOBUDXB5qrFeew77byMA1b9ppg0XEd0STadOzWQfY+ZRfvBPCmIvO6Bg=='/>
+		</item>
+		<item>
 			<title>TextMate 2.1.0-alpha.7</title>
 			<sparkle:version>15826</sparkle:version>
 			<sparkle:shortVersionString>2.1.0-alpha.7</sparkle:shortVersionString>
