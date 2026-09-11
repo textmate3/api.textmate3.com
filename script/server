@@ -4,10 +4,10 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-# shellcheck source=script/_chruby.sh
-source "$(dirname "$0")/_chruby.sh"
+# shellcheck source=script/_ruby.sh
+source "$(dirname "$0")/_ruby.sh"
 
 # Ensure tarballs exist before starting; cheap no-op if already current.
 script/build
 
-exec bundle exec puma --bind tcp://127.0.0.1:3000 config.ru
+exec rv run bundle exec puma --bind tcp://127.0.0.1:3000 config.ru
