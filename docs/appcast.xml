@@ -10,6 +10,21 @@
 		</description>
 		<language>en</language>
 		<item>
+			<title>TextMate 2.1.0-alpha.10</title>
+			<sparkle:version>15857</sparkle:version>
+			<sparkle:shortVersionString>2.1.0-alpha.10</sparkle:shortVersionString>
+			<sparkle:channel>alpha</sparkle:channel>
+			<sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+			<pubDate>Fri, 11 Sep 2026 03:34:48 -0000</pubDate>
+			<link>https://github.com/textmate3/textmate/releases/tag/v2.1.0-alpha.10</link>
+			<description>
+				<![CDATA[<ul>
+<li>Refuse a TM_RUBY that is not an executable file and say why (#57)</li>
+</ul>]]>
+			</description>
+			<enclosure url='https://github.com/textmate3/textmate/releases/download/v2.1.0-alpha.10/TextMate-2.1.0-alpha.10.zip' length='22881331' type='application/octet-stream' sparkle:edSignature='XAEey7LCOkICC+1rJ3fQ5ZG+bmz9lE5SXBjQiVmCr+VxkhNmjwbp6XBHQ7HkcktFPHdx510gROrmzPoQXD62Dg=='/>
+		</item>
+		<item>
 			<title>TextMate 2.1.0-alpha.9</title>
 			<sparkle:version>15856</sparkle:version>
 			<sparkle:shortVersionString>2.1.0-alpha.9</sparkle:shortVersionString>
