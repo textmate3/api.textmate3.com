@@ -10,6 +10,48 @@
 		</description>
 		<language>en</language>
 		<item>
+			<title>TextMate 2.1.0-alpha.9</title>
+			<sparkle:version>15856</sparkle:version>
+			<sparkle:shortVersionString>2.1.0-alpha.9</sparkle:shortVersionString>
+			<sparkle:channel>alpha</sparkle:channel>
+			<sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+			<pubDate>Fri, 11 Sep 2026 02:49:10 -0000</pubDate>
+			<link>https://github.com/textmate3/textmate/releases/tag/v2.1.0-alpha.9</link>
+			<description>
+				<![CDATA[<ul>
+<li>Refresh the seed bundles from the current catalog archives</li>
+<li>Write out the grapheme loops that used the citerate macro (#56)</li>
+<li>Write out the loops that used the foreach macro over an iterator pair (#55)</li>
+<li>Write out the loops that used the iterate macro and delete it (#54)</li>
+<li>Walk containers backwards with std::views::reverse in place of the riterate macro (#53)</li>
+<li>Say once when TM_RUBY is below the 4.0 minimum (#52)</li>
+<li>Test end to end that a Ruby command runs on the Ruby its shebang names (#51)</li>
+<li>Order version strings with a Swift Version (#50)</li>
+<li>Rewrite shebangs that spell out the system framework Ruby (#49)</li>
+<li>Drop the CFPlugInCOM import the QuickLook generator needed (#47)</li>
+<li>Silence the frozen string warning in gen_test (#48)</li>
+<li>Tell GitHub the headers are Objective-C++, not C (#46)</li>
+<li>Fold environment maps with insert at each site and drop oak/algorithm.h (#45)</li>
+<li>Write the family removal of marks out at its two callers (#44)</li>
+<li>Replace oak::replace_copy with text::replace_all (#43)</li>
+<li>Move the test shuffle helper into a test-only header (#42)</li>
+<li>Replace oak::contains and oak::has_prefix with the standard library (#41)</li>
+<li>Drop the unused slow_in_out easing curve (#40)</li>
+<li>Drop the DB_VAR macro and the header that existed for it (#39)</li>
+<li>The oak grab bag header is a print_system_error header (#38)</li>
+<li>Drop the file browser's duplicate status header (#37)</li>
+<li>Drop the network framework's umbrella header (#36)</li>
+<li>The C and Mac preludes say include rather than import (#35)</li>
+<li>The yellow flash in Swift (#34)</li>
+<li>The folder that stands for a selection, in Swift (#33)</li>
+<li>Find in Project on a folder and something inside it searches the folder, not its parent (#32)</li>
+<li>The interface sounds in Swift (#31)</li>
+<li>Drop the interface sound nothing ever played (#30)</li>
+</ul>]]>
+			</description>
+			<enclosure url='https://github.com/textmate3/textmate/releases/download/v2.1.0-alpha.9/TextMate-2.1.0-alpha.9.zip' length='22880543' type='application/octet-stream' sparkle:edSignature='Z0V3qSZbzNzoLOWoWkC0cbmhfiDPE5nfH1m3ohkIBOm285Uf1sygvTSBwltJAmZvIRvgwDAuSh4aGAvYmryQCQ=='/>
+		</item>
+		<item>
 			<title>TextMate 2.1.0-alpha.8</title>
 			<sparkle:version>15828</sparkle:version>
 			<sparkle:shortVersionString>2.1.0-alpha.8</sparkle:shortVersionString>
