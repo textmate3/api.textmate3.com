@@ -20,6 +20,8 @@ Future concepts repeat the same shape: a signed index, its detached signature, a
 
 `script/publish` builds the archives from the bundle sources, signs the index and every tarball with the production Ed25519 key on the maintainer's machine, writes the result into `docs/`, and pushes. The private key lives only in the maintainer's login keychain, so nothing that can push to this repository can forge a catalog: the application verifies both the index and each tarball against the public key compiled into it, and modified content fails verification rather than installing.
 
+Each archive carries a `Changes.json` at the top of the bundle, written by `script/build` from the checkout's git history, three calendar years of commits with their dates, authors, summaries and bodies. The application's About window reads it for the Bundles tab. The checkout itself is not touched: the file is staged beside it and added to the archive from there.
+
 `docs/` is the folder name GitHub Pages requires for serving a subdirectory of `main`; here it is the site, not documentation.
 
 ## Local development
