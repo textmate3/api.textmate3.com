@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# script/build — produce one .tbz tarball per bundle. Wraps build.rb so
-# chruby is loaded first.
+# script/build — produce one .tbz tarball per bundle. Wraps build.rb so it
+# runs on the Ruby this project pins.
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-# shellcheck source=script/_chruby.sh
-source "$(dirname "$0")/_chruby.sh"
+# shellcheck source=script/_ruby.sh
+source "$(dirname "$0")/_ruby.sh"
 
-exec ruby "$(dirname "$0")/build.rb"
+exec rv run ruby script/build.rb

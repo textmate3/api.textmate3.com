@@ -3,13 +3,13 @@
 # script/publish:
 # This script signs the bundle catalog with the production key and
 # pushes it to the public `catalog` repository.
-# It wraps publish.rb so chruby is loaded first.
+# It wraps publish.rb so it runs on the Ruby this project pins.
 
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-# shellcheck source=script/_chruby.sh
-source "$(dirname "$0")/_chruby.sh"
+# shellcheck source=script/_ruby.sh
+source "$(dirname "$0")/_ruby.sh"
 
-exec ruby "$(dirname "$0")/publish.rb"
+exec rv run ruby script/publish.rb
