@@ -27,9 +27,20 @@ bundles:
   bundle-support.tmbundle:
     isMandatory: true
     category: System
-  # The Ruby bundle commands run on, and the Ruby a project asks for, through rv.
+  # The runtimes a bundle command runs on. One bundle per language, so the
+  # manager a language needs is only downloaded by people who use it, and a
+  # shared one holding the protocol they all answer in.
   runtimes.tmbundle:
     isMandatory: true
+    category: System
+  runtimes-ruby.tmbundle:
+    isMandatory: true
+    category: System
+  # Not mandatory and not default: a minority of bundles run Python, and uv is
+  # larger than everything else TextMate ships put together. Installing this is
+  # how a person says they are one of that minority.
+  runtimes-python.tmbundle:
+    isDefault: false
     category: System
 
   # Bundle authoring

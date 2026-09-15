@@ -69,6 +69,20 @@ class Catalog
     nil
   end
 
+  # A bundle names what it depends on by uuid, or by the scope of a grammar it
+  # needs someone to provide. The application resolves both, and pulls in
+  # whatever is not installed when the bundle is installed.
+  def dependency_entries(info)
+    Array(info["dependencies"]).filter_map do |dependency|
+      next unless dependency.is_a?(Hash)
+      if (uuid = dependency["uuid"])
+        { "name" => dependency["name"], "uuid" => uuid }.compact
+      elsif (grammar = dependency["grammar"])
+        { "name" => dependency["name"], "grammar" => grammar }.compact
+      end
+    end
+  end
+
   def grammar_entries(dir_name)
     syntaxes_dir = File.join(@bundles_root, dir_name, "Syntaxes")
     return [] unless File.directory?(syntaxes_dir)
@@ -132,7 +146,14 @@ class Catalog
     entry["description"]       = info["description"]       if info["description"]
     entry["contactName"]       = info["contactName"]       if info["contactName"]
     entry["contactEmailRot13"] = info["contactEmailRot13"] if info["contactEmailRot13"]
-    entry["requires"]          = info["requires"]          if info["requires"].is_a?(Array)
+
+    # The application reads `requires` as the oldest version of itself that can
+    # use the bundle, a string, and `dependencies` as the bundles that have to
+    # be installed alongside, each `{name, uuid}`. Both come from the bundle's
+    # own info.plist. This used to put an array into `requires`, which would
+    # have been compared against a version string had any bundle set it.
+    entry["requires"]     = info["requires"]     if info["requires"].is_a?(String)
+    entry["dependencies"] = dependency_entries(info) if info["dependencies"]
 
     grammars = grammar_entries(dir_name)
     entry["grammars"] = grammars unless grammars.empty?
