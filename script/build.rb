@@ -107,8 +107,12 @@ Dir.mktmpdir("textmate-bundle-build") do |staging_root|
     write_changes_json(source_dir, staging_dir)
 
     # The checkout provides the bundle, the staging directory provides the one generated file beside it.
+    #
+    # __pycache__ is whatever Python happened to compile in a checkout, so it
+    # is a working copy artifact rather than part of the bundle, and it would
+    # otherwise ship and then be stale on the first person's machine.
     command = [
-      "tar", "--no-mac-metadata", "--exclude=.git", "-cjf", tarball_path,
+      "tar", "--no-mac-metadata", "--exclude=.git", "--exclude=__pycache__", "--exclude=.DS_Store", "-cjf", tarball_path,
       "-C", BUNDLES_ROOT, name,
       "-C", staging_root, File.join(name, "Changes.json")
     ]
