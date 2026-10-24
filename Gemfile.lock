@@ -59,7 +59,7 @@ CHECKSUMS
   tilt (2.9.0) sha256=da5735d0280bba96e9a91041bb14aee435ccad5c17b0fa519249ae543d9aa3a5
 
 RUBY VERSION
-  ruby 4.0.6
+  ruby 4.0.8
 
 BUNDLED WITH
   4.0.18
