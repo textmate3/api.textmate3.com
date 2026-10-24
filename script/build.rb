@@ -11,7 +11,6 @@
 # its Bundles tab. The file is staged outside the checkout so the checkout
 # stays clean.
 
-require "cgi"
 require "fileutils"
 require "json"
 require "open3"
@@ -62,7 +61,7 @@ end
 
 # The checkout's recent commits, newest first, as the About window's Bundles tab expects them.
 # Fields are separated by a NUL and commits by a record separator, neither of which a commit message can hold.
-# Summary and body are inserted into the page as HTML, so they are escaped here.
+# Summary and body are the commit message as git has it. The file is data, and how a reader shows it is the reader's concern.
 def recent_commits(source_dir)
   format = "%aI%x00%an%x00%s%x00%b%x1e"
   log, status = Open3.capture2("git", "-C", source_dir, "log", "--since=#{CHANGES_SINCE}", "--format=#{format}", err: File::NULL)
@@ -74,8 +73,8 @@ def recent_commits(source_dir)
     {
       date: date,
       author: author,
-      summary: CGI.escapeHTML(summary.to_s),
-      body: CGI.escapeHTML(body.to_s.strip),
+      summary: summary.to_s,
+      body: body.to_s.strip,
     }
   end
 end
