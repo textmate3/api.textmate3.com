@@ -10,6 +10,26 @@
 		</description>
 		<language>en</language>
 		<item>
+			<title>TextMate 2.1.0-alpha.11</title>
+			<sparkle:version>15863</sparkle:version>
+			<sparkle:shortVersionString>2.1.0-alpha.11</sparkle:shortVersionString>
+			<sparkle:channel>alpha</sparkle:channel>
+			<sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+			<pubDate>Sat, 24 Oct 2026 02:09:43 -0000</pubDate>
+			<link>https://github.com/textmate3/textmate/releases/tag/v2.1.0-alpha.11</link>
+			<description>
+				<![CDATA[<ul>
+<li>Mark CommitMessageDocument @MainActor (#66)</li>
+<li>Move the chooser abbreviation memory to Swift (#65)</li>
+<li>Move the commit window to Swift and SwiftUI (#63)</li>
+<li>Move the HTML output status strip to SwiftUI (#64)</li>
+<li>Refresh the seed bundles after the Python work landed (#62)</li>
+<li>A runtime bundle per language, and a Python for bundle commands (#58)</li>
+</ul>]]>
+			</description>
+			<enclosure url='https://github.com/textmate3/textmate/releases/download/v2.1.0-alpha.11/TextMate-2.1.0-alpha.11.zip' length='23032206' type='application/octet-stream' sparkle:edSignature='G+cpOWOOStijlWXxnh40LlX6Ik7I6yS38bAvGLMsa428IVwx6yVVO2CIInfNOOhVwRv2c375F5gIKU4/zWUiCA=='/>
+		</item>
+		<item>
 			<title>TextMate 2.1.0-alpha.10</title>
 			<sparkle:version>15857</sparkle:version>
 			<sparkle:shortVersionString>2.1.0-alpha.10</sparkle:shortVersionString>
