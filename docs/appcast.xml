@@ -10,6 +10,43 @@
 		</description>
 		<language>en</language>
 		<item>
+			<title>TextMate 2.1.0-alpha.12</title>
+			<sparkle:version>15886</sparkle:version>
+			<sparkle:shortVersionString>2.1.0-alpha.12</sparkle:shortVersionString>
+			<sparkle:channel>alpha</sparkle:channel>
+			<sparkle:minimumSystemVersion>27.0</sparkle:minimumSystemVersion>
+			<pubDate>Tue, 27 Oct 2026 03:33:18 -0000</pubDate>
+			<link>https://github.com/textmate3/textmate/releases/tag/v2.1.0-alpha.12</link>
+			<description>
+				<![CDATA[<ul>
+<li>Refresh the contributions data for 2.1.0-alpha.12</li>
+<li>Stop the signing steps and one file browser object rerunning on every build (#87)</li>
+<li>Show a notice when a .tm_properties section header cannot be read (#86)</li>
+<li>Wrap the key equivalents in the release notes in backticks (#84)</li>
+<li>Accept a comma between the names of a .tm_properties section header (#83)</li>
+<li>Name the test a C++ test binary crashes in (#82)</li>
+<li>A Runtimes pane in Preferences (#81)</li>
+<li>Give every Swift compile its own depfile and restat its outputs (#85)</li>
+<li>A notice strip above the text for what the launch did about the runtimes (#80)</li>
+<li>Move Python to 3.14.9 (#79)</li>
+<li>Read the runtime pins from .ruby-version and .python-version, and move Ruby to 4.0.9 (#78)</li>
+<li>Check the Ruby on the PATH against .ruby-version in configure (#76)</li>
+<li>Delete the Title lines from the About pages and the code that skipped them (#77)</li>
+<li>Name the Swift module in ninja's progress line (#75)</li>
+<li>Refresh the contributions data from the release scripts (#74)</li>
+<li>Say what multimarkdown is for now that the release notes are native: the Help pages</li>
+<li>Refresh the contributions data after #72 (#73)</li>
+<li>Show Contributions natively, with the data behind it as one JSON file per year (#72)</li>
+<li>Show the About window's Changes, Legal and Bundles pages natively (#71)</li>
+<li>Add a native Markdown renderer to OakAppKit (#70)</li>
+<li>Refresh the seed bundles with unescaped Changes.json (#69)</li>
+<li>Insert commit summaries and bodies into the Bundles page as text (#68)</li>
+<li>Raise the minimum macOS to 27 (and Swift to 6.4) (#67)</li>
+</ul>]]>
+			</description>
+			<enclosure url='https://github.com/textmate3/textmate/releases/download/v2.1.0-alpha.12/TextMate-2.1.0-alpha.12.zip' length='23067226' type='application/octet-stream' sparkle:edSignature='Y2kWxwVCXBiL8tM65Q28IRQr5yi2pvQ5fqadQbihXdISA6y4Q2h1sL1Tx57cQZ7wz3Uswp3MuhQK4FzHsK+KCA=='/>
+		</item>
+		<item>
 			<title>TextMate 2.1.0-alpha.11</title>
 			<sparkle:version>15863</sparkle:version>
 			<sparkle:shortVersionString>2.1.0-alpha.11</sparkle:shortVersionString>
