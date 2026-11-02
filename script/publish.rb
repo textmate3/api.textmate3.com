@@ -25,8 +25,8 @@ SITE_ROOT         = File.expand_path("docs")
 PRODUCTION_ORIGIN = "https://api.textmate3.com"
 
 # The archives are built from the bundle checkouts as they are on disk, so a
-# checkout that is dirty or behind its remote is refused by name before
-# anything is built. A publish before a pull once shipped an old bundle in
+# checkout that is dirty, behind its remote, or not on main is refused by name
+# before anything is built. A publish before a pull once shipped an old bundle in
 # silence, and this is what would have refused it.
 require_relative "../lib/checkouts"
 Checkouts.new(root: File.expand_path("../bundles")).refuse_stale!
