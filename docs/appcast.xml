@@ -10,6 +10,68 @@
 		</description>
 		<language>en</language>
 		<item>
+			<title>TextMate 2.1.0-alpha.13</title>
+			<sparkle:version>15934</sparkle:version>
+			<sparkle:shortVersionString>2.1.0-alpha.13</sparkle:shortVersionString>
+			<sparkle:channel>alpha</sparkle:channel>
+			<sparkle:minimumSystemVersion>27.0</sparkle:minimumSystemVersion>
+			<pubDate>Sat, 07 Nov 2026 08:24:29 -0000</pubDate>
+			<link>https://github.com/textmate3/textmate/releases/tag/v2.1.0-alpha.13</link>
+			<description>
+				<![CDATA[<ul>
+<li>Refresh the contributions data for 2.1.0-alpha.13</li>
+<li>Refresh the contributions data for 2.1.0-alpha.13</li>
+<li>Fail script/lint on warnings, and clear the warnings (#134)</li>
+<li>Point the About window's links at textmate3.com (#132)</li>
+<li>Make script/lint pass, and run it in CI (#133)</li>
+<li>Format with std::format and remove text::format (#131)</li>
+<li>Walk graphemes with a range for over grapheme values (#130)</li>
+<li>Find and erase with standard algorithms in the snippet, the event watcher and the bundle index (#129)</li>
+<li>Use std::ranges algorithms that take the container for whole-container searches and counts (#128)</li>
+<li>Use nullptr for the last NULLs (#127)</li>
+<li>Use using for the last five typedefs (#126)</li>
+<li>Drop the Homebrew include step from the CI and Benchmarks workflows (#125)</li>
+<li>Benchmark follow-ups: the right base, every sample kept, a clean report (#124)</li>
+<li>Benchmark every pull request against main (#123)</li>
+<li>using where typedef was, across the file and tool frameworks (#122)</li>
+<li>using where typedef was, across the editing core (#121)</li>
+<li>nullptr where NULL was, across the interface frameworks and the applications (#120)</li>
+<li>nullptr where NULL was, across the C++ frameworks and the shared headers (#119)</li>
+<li>nullptr where NULL was, in OakTextView apart from the text view (#118)</li>
+<li>nullptr where NULL was, in the theme framework (#117)</li>
+<li>nullptr where NULL was, in OakAppKit (#116)</li>
+<li>Take the CRC-32 from the system's zlib and drop boost from the build (#115)</li>
+<li>A lambda for the tree's last std::bind (#114)</li>
+<li>Declare pipe ends as structured bindings where no block captures them (#113)</li>
+<li>Fork rather than vfork for the assertion stack dump (#112)</li>
+<li>Drop the debug log facility nothing uses (#111)</li>
+<li>Keep the OS version lookup beside its one caller (#110)</li>
+<li>Read the steady clock where the shared duration timer was (#109)</li>
+<li>Drop the iterator macros header nothing uses (#108)</li>
+<li>Stop the file system events tests racing the main queue callback (#107)</li>
+<li>Port the HTML output asset policy to Swift (#106)</li>
+<li>Bring back the link preview and the scroll position in HTML output (#105)</li>
+<li>Port the chooser search field and its accessibility padding to Swift (#104)</li>
+<li>Port the chooser base class to Swift (#103)</li>
+<li>Port the Select Bundle Item chooser to Swift (#102)</li>
+<li>Port the Open Quickly chooser to Swift (#101)</li>
+<li>Port the Open Recent Project chooser to Swift (#100)</li>
+<li>Port the Jump to Symbol chooser to Swift (#98)</li>
+<li>Keep C++ out of the chooser base class header (#97)</li>
+<li>Port the JavaScript bridge and its shell command to Swift (#96)</li>
+<li>Port find, selection and view source in HTML output to Swift (#95)</li>
+<li>Port the HTML output scheme handler to Swift (#94)</li>
+<li>Move the HTML output window controller to Swift (#93)</li>
+<li>Stop the HTML output view appending a trace log under /tmp (#92)</li>
+<li>Move the HTML output view to Swift (#91)</li>
+<li>Run the person's own code on the Ruby their project pins (#90)</li>
+<li>Check for updates every hour on the alpha and beta channels and once a day on release (#89)</li>
+<li>Drop the zero termination call that clang warns about in the temporary file template (#88)</li>
+</ul>]]>
+			</description>
+			<enclosure url='https://github.com/textmate3/textmate/releases/download/v2.1.0-alpha.13/TextMate-2.1.0-alpha.13.zip' length='23438709' type='application/octet-stream' sparkle:edSignature='CLY8ibAjdOcGH7iUcTZ183v/0vbR0kiz8H+whLB6zVrT8ROVNR7ua6JgPsFuk2u/VigCgQRmvqX6+cCp3XQXCw=='/>
+		</item>
+		<item>
 			<title>TextMate 2.1.0-alpha.12</title>
 			<sparkle:version>15886</sparkle:version>
 			<sparkle:shortVersionString>2.1.0-alpha.12</sparkle:shortVersionString>
