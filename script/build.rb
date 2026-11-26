@@ -91,9 +91,14 @@ def recent_commits(source_dir)
   end
 end
 
+# The file takes the bundle's newest time rather than the time of the build,
+# so rebuilding unchanged files makes the same archive, byte for byte, and a publish commits nothing new for it.
 def write_changes_json(source_dir, staging_dir)
   changes = { name: bundle_name(source_dir), commits: recent_commits(source_dir) }
-  File.write(File.join(staging_dir, "Changes.json"), JSON.pretty_generate(changes) + "\n")
+  path = File.join(staging_dir, "Changes.json")
+  File.write(path, JSON.pretty_generate(changes) + "\n")
+  newest = Time.at(newest_mtime_under(source_dir))
+  File.utime(newest, newest, path)
 end
 
 rebuilt   = 0
