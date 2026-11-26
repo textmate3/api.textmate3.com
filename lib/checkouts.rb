@@ -25,23 +25,7 @@ class Checkouts
 
   # One line per problem, naming the checkout, or none when every checkout is clean and current.
   def problems
-    queue = Queue.new
-    names.each { queue << it }
-    queue.close
-
-    found = Queue.new
-    threads = Array.new(@workers) do
-      Thread.new do
-        while (name = queue.pop)
-          problems_with(name).each { found << it }
-        end
-      end
-    end
-    threads.each(&:join)
-
-    lines = []
-    lines << found.pop until found.empty?
-    lines.sort
+    lines_from_each { problems_with(it) }
   end
 
   # Aborts with every problem listed when there is one, and with the ways out
@@ -57,6 +41,27 @@ class Checkouts
   end
 
   private
+
+  # Every checkout's lines from the block, gathered a few checkouts at a time and sorted.
+  def lines_from_each
+    queue = Queue.new
+    names.each { queue << it }
+    queue.close
+
+    found = Queue.new
+    threads = Array.new(@workers) do
+      Thread.new do
+        while (name = queue.pop)
+          yield(name).each { found << it }
+        end
+      end
+    end
+    threads.each(&:join)
+
+    lines = []
+    lines << found.pop until found.empty?
+    lines.sort
+  end
 
   # The archive is built from whatever branch is checked out, so a checkout
   # left on a feature branch would publish that branch's work, or miss what
