@@ -4,7 +4,8 @@
 # Reads from ../bundles/*.tmbundle and ../bundles/*-tmbundle, honors the
 # `exclude` list in data/catalog.yml, and writes tarballs/<dir-name>.tbz.
 # Skips bundles whose contents are unchanged since the last build (tarball
-# mtime newer than every file under the bundle dir and than this script).
+# mtime newer than every file and folder the archive is made from, and than
+# this script).
 #
 # Each tarball carries a Changes.json at the top of the bundle, written from
 # the checkout's git history, which the application's About window reads for
@@ -38,11 +39,22 @@ bundle_dirs = Dir.children(BUNDLES_ROOT)
   .reject  { |name| excluded.include?(name) }
   .sort
 
+# What tar leaves out of an archive, so a change to it is not a change to the bundle.
+# A fetch writes into .git, so counting it would rebuild every bundle on every publish.
+NOT_ARCHIVED = %w[.git __pycache__ .DS_Store].freeze
+
+def archived?(path, directory)
+  relative = path.delete_prefix("#{directory}/")
+  relative.split("/").none? { NOT_ARCHIVED.include?(it) }
+end
+
+# The newest time among the files and folders the archive is made from.
+# Folders count because removing a file changes its folder's time and nothing else.
 def newest_mtime_under(directory)
-  newest = 0
+  newest = File.mtime(directory).to_i
   Dir.glob(File.join(directory, "**", "*"), File::FNM_DOTMATCH).each do |path|
-    next if File.basename(path).start_with?(".git")
-    next unless File.file?(path)
+    next if [".", ".."].include?(File.basename(path))
+    next unless archived?(path, directory)
     mtime = File.mtime(path).to_i rescue 0
     newest = mtime if mtime > newest
   end
