@@ -25,6 +25,32 @@ class Checkouts
 
   # One line per problem, naming the checkout, or none when every checkout is clean and current.
   def problems
+    lines_from_each { problems_with(it) }
+  end
+
+  # Brings each checkout it safely can to main, pulled, and returns one line per checkout it left as it was.
+  # A checkout with uncommitted changes, or on a branch with commits main does not have, is left for a person.
+  def update
+    lines_from_each { update_one(it) }
+  end
+
+  # Aborts with every problem listed when there is one, and with the ways out
+  # for each checkout that is not on main.
+  def refuse_stale!
+    lines = problems
+    return if lines.empty?
+
+    message = "publish: refusing to build from these checkouts\n  #{lines.join("\n  ")}\n\n" \
+              "script/update_bundles brings every checkout it safely can to main and pulls it."
+    off_main = names.reject { on_main?(it) }
+    message += "\n#{off_main_help(off_main)}" if off_main.any?
+    abort message
+  end
+
+  private
+
+  # Every checkout's lines from the block, gathered a few checkouts at a time and sorted.
+  def lines_from_each
     queue = Queue.new
     names.each { queue << it }
     queue.close
@@ -33,7 +59,7 @@ class Checkouts
     threads = Array.new(@workers) do
       Thread.new do
         while (name = queue.pop)
-          problems_with(name).each { found << it }
+          yield(name).each { found << it }
         end
       end
     end
@@ -43,20 +69,6 @@ class Checkouts
     lines << found.pop until found.empty?
     lines.sort
   end
-
-  # Aborts with every problem listed when there is one, and with the ways out
-  # for each checkout that is not on main.
-  def refuse_stale!
-    lines = problems
-    return if lines.empty?
-
-    message = "publish: refusing to build from these checkouts\n  #{lines.join("\n  ")}"
-    off_main = names.reject { on_main?(it) }
-    message += "\n#{off_main_help(off_main)}" if off_main.any?
-    abort message
-  end
-
-  private
 
   # The archive is built from whatever branch is checked out, so a checkout
   # left on a feature branch would publish that branch's work, or miss what
@@ -101,6 +113,40 @@ class Checkouts
       HELP
     end
     sections.join + "\nThen run script/publish again."
+  end
+
+  def upstream_gone?(name)
+    directory = File.join(@root, name)
+    current   = branch(name)
+    return false if current.empty?
+
+    track = IO.popen(["git", "-C", directory, "for-each-ref", "--format=%(upstream:track)", "refs/heads/#{current}"], &:read)
+    track.strip == "[gone]"
+  end
+
+  def update_one(name)
+    directory = File.join(@root, name)
+
+    dirty = `git -C #{directory.shellescape} status --porcelain`.strip
+    return ["#{name} has uncommitted changes"] unless dirty.empty?
+
+    return ["#{name} could not fetch its remote"] unless system("git", "-C", directory, "fetch", "--quiet", out: File::NULL, err: File::NULL)
+
+    unless on_main?(name)
+      unmerged = `git -C #{directory.shellescape} rev-list --count origin/main..HEAD 2>/dev/null`.strip
+      unless unmerged == "0"
+        commits = unmerged == "1" ? "1 commit" : "#{unmerged} commits"
+        line = "#{name} is on #{branch_label(name)}, which has #{commits} main does not"
+        # A squash merge leaves the branch's own commits off main, and merging deletes the remote branch.
+        line += ", and its remote branch is gone, so it was likely merged" if upstream_gone?(name)
+        return [line]
+      end
+      return ["#{name} could not switch to main"] unless system("git", "-C", directory, "switch", "--quiet", "main", out: File::NULL, err: File::NULL)
+    end
+
+    return ["#{name} could not fast forward main to its remote"] unless system("git", "-C", directory, "merge", "--ff-only", "--quiet", "@{upstream}", out: File::NULL, err: File::NULL)
+
+    []
   end
 
   def problems_with(name)
